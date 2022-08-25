@@ -5,6 +5,10 @@ function indexStars(req, res) {
 }
 
 function postStar(req, res) {
+   if(!req.body.name) {
+      return res.status(400).json({error: "Missing 'name' property."});
+   }
+
    const newStar = {
       id: stars.length,
       name: req.body.name
@@ -13,7 +17,8 @@ function postStar(req, res) {
    res.status(200).json(newStar);
 }
 
-function getStar(req, res) {   res
+function getStar(req, res) {
+   res
       .status(
          stars[req.params.id] ? 200 : 404
       )

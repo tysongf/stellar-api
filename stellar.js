@@ -1,7 +1,10 @@
 const express = require('express');
+
+const starsRouter = require('./routers/stars.router');
 const starsController = require('./controllers/stars.controller');
-const API_PORT = 2000;
+
 const api = express();
+const API_PORT = 2000;
 
 //logging middleware
 api.use((req, res, next) => {
@@ -11,11 +14,8 @@ api.use((req, res, next) => {
    console.log(`Request: ${req.method} ${req.url} : ${delta_time}ms`);
 });
 
-api.use(express.json());
-
-api.post('/stars', starsController.postStar);
-api.get('/stars', starsController.indexStars);
-api.get('/stars/:id', starsController.getStar);
+api.use(express.json());         //parse json requests
+api.use('/stars', starsRouter);  //mount the router
 
 api.listen(API_PORT, () => {
    console.log(`Stellar API listening on ${API_PORT}...`);
