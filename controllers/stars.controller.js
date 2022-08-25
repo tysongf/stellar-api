@@ -20,10 +20,10 @@ function postStar(req, res) {
 function getStar(req, res) {
    res
       .status(
-         stars[req.params.id] ? 200 : 404
+         stars[req.params.star_id] ? 200 : 404
       )
       .json(
-         stars[req.params.id] ? stars[req.params.id] : { error: 'Star not found.' }
+         stars[req.params.star_id] ? stars[req.params.star_id] : { error: 'Star not found.' }
       );
 }
 
