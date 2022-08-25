@@ -1,41 +1,21 @@
 const express = require('express');
-
+const starsController = require('./controllers/stars.controller');
 const API_PORT = 2000;
 const api = express();
 
-const stars = [
-   {
-      id: 0,
-      name: 'Sol',
-      planets: [
-         {id: 0, name: 'Mercury'},
-         {id: 1, name: 'Venus'},
-         {id: 2, name: 'Earth'},
-         {id: 3, name: 'Mars'},
-         {id: 4, name: 'Jupiter'},
-         {id: 5, name: 'Saturn'},
-         {id: 6, name: 'Uranus'},
-         {id: 7, name: 'Neptune'}
-      ]
-   },
-   {
-      id: 1, name: 'Alpha Centauri', planets: []
-   }
-];
-
-api.get('/stars', (req, res) => {
-   res.json(stars);
+//logging middleware
+api.use((req, res, next) => {
+   const start_time = Date.now();
+   next();
+   const delta_time = Date.now() - start_time;
+   console.log(`Request: ${req.method} ${req.url} : ${delta_time}ms`);
 });
 
-api.get('/stars/:id', (req, res) => {
-   res
-      .status(
-         stars[req.params.id] ? 200 : 404
-      )
-      .json(
-         stars[req.params.id] ? stars[req.params.id] : { error: 'Star not found.' }
-      );
-});
+api.use(express.json());
+
+api.post('/stars', starsController.postStar);
+api.get('/stars', starsController.indexStars);
+api.get('/stars/:id', starsController.getStar);
 
 api.listen(API_PORT, () => {
    console.log(`Stellar API listening on ${API_PORT}...`);
