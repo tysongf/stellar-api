@@ -32,9 +32,14 @@ function getStarImage(req, res) {
    res.sendFile(path.join(__dirname, '..', 'public', 'img', 'star.png'));
 }
 
+function getPlanets(req, res) {
+   res.render('planets', { planets: stars[0].planets});
+}
+
 module.exports = {
    postStar,
    indexStars,
    getStar,
-   getStarImage
+   getStarImage,
+   getPlanets
 }

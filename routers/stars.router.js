@@ -9,5 +9,7 @@ starsRouter.post('/', starsController.postStar);
 starsRouter.get('/', starsController.indexStars);
 starsRouter.get('/:star_id', starsController.getStar);
 starsRouter.get('/:star_id/image', starsController.getStarImage);
+starsRouter.get('/:star_id/planets', starsController.getPlanets); //testing hbs template engine
+
 
 module.exports = starsRouter;
