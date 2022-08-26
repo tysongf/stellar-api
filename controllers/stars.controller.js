@@ -29,7 +29,7 @@ function getStar(req, res) {
 }
 
 function getStarImage(req, res) {
-   res.sendFile(path.join(__dirname, '..', 'public', 'images', 'star.png'));
+   res.sendFile(path.join(__dirname, '..', 'public', 'img', 'star.png'));
 }
 
 module.exports = {
