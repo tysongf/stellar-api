@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/tysongf/stellar-api#readme",
   "dependencies": {
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "hbs": "^4.2.0"
   }
 }
