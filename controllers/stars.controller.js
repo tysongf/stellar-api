@@ -1,4 +1,5 @@
 const stars = require('../models/stars.model');
+const path = require('path');
 
 function indexStars(req, res) {
    res.send(stars);
@@ -27,8 +28,13 @@ function getStar(req, res) {
       );
 }
 
+function getStarImage(req, res) {
+   res.sendFile(path.join(__dirname, '..', 'public', 'images', 'star.png'));
+}
+
 module.exports = {
    postStar,
    indexStars,
-   getStar
+   getStar,
+   getStarImage
 }

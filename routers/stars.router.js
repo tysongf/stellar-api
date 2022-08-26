@@ -8,5 +8,6 @@ starsRouter.use(starsMiddleware);
 starsRouter.post('/', starsController.postStar);
 starsRouter.get('/', starsController.indexStars);
 starsRouter.get('/:star_id', starsController.getStar);
+starsRouter.get('/:star_id/image', starsController.getStarImage);
 
 module.exports = starsRouter;
