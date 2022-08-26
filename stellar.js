@@ -1,10 +1,13 @@
 const express = require('express');
+const path = require('path');
 
 const timerMiddleware = require('./middleware/timer.middleware');
 const starsRouter = require('./routers/stars.router');
 
 const api = express();
 const API_PORT = 2000;
+
+api.use('/site', express.static(path.join(__dirname, 'public')));
 
 api.use(timerMiddleware);        // log API request and response time
 api.use(express.json());         // parse json requests
